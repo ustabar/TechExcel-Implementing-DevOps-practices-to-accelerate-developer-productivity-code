@@ -14,6 +14,9 @@ on:
   issues:
     types: [opened]
 
+env:
+  MY_VAR: "Environment Variable Value"
+
 # This section covers the work to perform.
 # We include one or more jobs in this section.
 jobs:
@@ -29,7 +32,7 @@ jobs:
     - name: Step one
       # The 'run' command executes a shell or command script. Because this is Ubuntu, the
       # default run command will be /bin/bash
-      run: echo "Step 1 complete!"
+      run: echo "Step 1 complete! ${{ env.MY_VAR }}"
       # This section does not appear in the solution file but demonstrates how to set
       # custom variables that will be available in the run script.
       env:
@@ -52,5 +55,5 @@ jobs:
       # The 'with' block includes parameters that the workflow will pass
       # to this action. Parameters are all in key-value format.
       with:
-        text: 'Ready for prod--ship it!'
+        text: "Ready for prod–ship it! ${{ env.MY_VAR }}"
         color: 'magenta'
